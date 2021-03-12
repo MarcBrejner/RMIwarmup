@@ -4,7 +4,6 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class MyServer extends UnicastRemoteObject implements API {
 
-
         CarFactory factory;
 
         protected MyServer() throws RemoteException {
@@ -25,9 +24,14 @@ public class MyServer extends UnicastRemoteObject implements API {
         }
 
         public static void main(String args[]){
+
+        String hostname = "0.0.0.0";
+        String port = "5000";
+        String bindLocation = "//" + hostname + ":" + port + "/car";
+
         try{
             API stub = new MyServer();
-            Naming.rebind("rmi://localhost:5000/sonoo",stub);
+            Naming.rebind(bindLocation,stub);
             Car c = new Car();
             c.run();
             CarFactory.addNewCar(c);
