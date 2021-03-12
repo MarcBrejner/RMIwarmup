@@ -2,7 +2,7 @@ import java.rmi.*;
 public class MyClient{
     public static void main(String args[]){
         try{
-            String hostname = "MARC-PC";
+            String hostname = "192.168.0.107";
             String port = "5000";
             String connectLocation = "//" + hostname + ":" + port + "/car";
 
