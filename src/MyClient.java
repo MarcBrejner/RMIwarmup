@@ -2,7 +2,11 @@ import java.rmi.*;
 public class MyClient{
     public static void main(String args[]){
         try{
-            API stub= (API) Naming.lookup("rmi://localhost:5000/sonoo");
+            String hostname = "MARC-PC";
+            String port = "5000";
+            String connectLocation = "//" + hostname + ":" + port + "/car";
+
+            API stub= (API) Naming.lookup(connectLocation);
             System.out.println("Ost");
 
             Car c = stub.getCar();
