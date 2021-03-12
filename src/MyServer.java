@@ -29,8 +29,12 @@ public class MyServer extends UnicastRemoteObject implements API {
             API stub = new MyServer();
             Naming.rebind("rmi://localhost:5000/sonoo",stub);
             Car c = new Car();
+            c.run();
             CarFactory.addNewCar(c);
-            System.out.print(CarFactory.finishedCars.take().getWheels());
+            Car q = CarFactory.finishedCars.take();
+            System.out.print(q.getWheels());
+            q.run();
+
         }catch(Exception e){System.out.println(e);}
     }
 

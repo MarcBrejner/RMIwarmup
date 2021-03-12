@@ -6,11 +6,13 @@ public class MyClient{
             System.out.println("Ost");
 
             Car c = stub.getCar();
+            System.out.println("qq");
             c.run();
+            c.binaryTree.add(11);
             c.setWheels(100);
             c.run();
             stub.putCar(c);
 
-        }catch(Exception e){}
+        }catch(Exception e){System.out.println(e);}
     }
-}  
+}
