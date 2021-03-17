@@ -9,9 +9,6 @@ import java.rmi.server.UnicastRemoteObject;
 public class MyServer implements API {
 
         CarFactory factory;
-        String hostname = "localhost";
-        String port = "5000";
-        String bindLocation = "//" + hostname + ":" + port + "/car";
 
         protected MyServer() throws RemoteException {
             factory = new CarFactory();

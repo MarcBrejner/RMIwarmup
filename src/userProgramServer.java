@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 
 public class userProgramServer {
     public static void main(String []args) throws RemoteException, AlreadyBoundException, InterruptedException {
-        CarFactory server = new CarFactory();
+        MyServer server = new MyServer();
         server.start();
     }
 }
