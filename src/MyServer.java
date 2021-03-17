@@ -26,15 +26,17 @@ public class MyServer implements API {
 
         public static void main(String args[]){
 
+        /*
         String hostname = "192.168.0.107";
         String port = "5000";
         String bindLocation = "//" + hostname + ":" + port + "/car";
+        */
 
         try{
             API server = new MyServer();
             API stub = (API) UnicastRemoteObject.exportObject(server,0);
             Registry registry = LocateRegistry.createRegistry(5000);
-            registry.bind(bindLocation,stub);
+            registry.bind("Car",stub);
 
             Car c = new Car();
             c.run();
