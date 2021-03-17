@@ -1,10 +1,11 @@
+import java.io.Serializable;
 import java.rmi.*;
 import java.rmi.registry.*;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.concurrent.LinkedBlockingQueue;
 
 
-public class CarFactory implements API {
+public class CarFactory implements API, Serializable {
     public static LinkedBlockingQueue<Car> cars = new LinkedBlockingQueue<Car>();
     public static LinkedBlockingQueue<Car> finishedCars = new LinkedBlockingQueue<Car>();
 
