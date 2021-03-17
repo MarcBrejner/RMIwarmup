@@ -1,12 +1,5 @@
 import java.rmi.*;
-import java.rmi.registry.*;
-import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
-
 
 public class CarFactory {
     public static LinkedBlockingQueue<Car> cars = new LinkedBlockingQueue<Car>();
@@ -25,6 +18,4 @@ public class CarFactory {
     public static void putCar(Car ca) throws RemoteException{
         finishedCars.add(ca);
     }
-
-
 }
