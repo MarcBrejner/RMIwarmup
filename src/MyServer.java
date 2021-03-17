@@ -1,3 +1,4 @@
+
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
@@ -6,17 +7,17 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.concurrent.LinkedBlockingQueue;
-
+/*
 public class MyServer implements API {
         public static LinkedBlockingQueue<Car> cars = new LinkedBlockingQueue<Car>();
         public static LinkedBlockingQueue<Car> finishedCars = new LinkedBlockingQueue<Car>();
 
         CarFactory factory;
-        /*
+
         protected MyServer() throws RemoteException {
             factory = new CarFactory();
         }
-        */
+
 
         public int add(int x,int y)throws RemoteException{
             return 2+2;
@@ -47,3 +48,4 @@ public class MyServer implements API {
     }
 
 }
+*/
