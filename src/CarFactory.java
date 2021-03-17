@@ -26,12 +26,5 @@ public class CarFactory {
         finishedCars.add(ca);
     }
 
-    public static void test() throws InterruptedException {
-                ArrayList<Car> carList = new ArrayList<Car>();
-                Car c = new Car();
-                addNewCar(c);
-                System.out.println(finishedCars.take().getWheels());
-    }
-
 
 }
