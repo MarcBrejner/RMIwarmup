@@ -12,10 +12,11 @@ public class MyServer implements API {
         public static LinkedBlockingQueue<Car> finishedCars = new LinkedBlockingQueue<Car>();
 
         CarFactory factory;
-
+        /*
         protected MyServer() throws RemoteException {
             factory = new CarFactory();
         }
+        */
 
         public int add(int x,int y)throws RemoteException{
             return 2+2;
@@ -30,6 +31,7 @@ public class MyServer implements API {
         }
 
         public void start() throws RemoteException, InterruptedException , AlreadyBoundException {
+            factory = new CarFactory();
             API server = new MyServer();
             API stub = (API) UnicastRemoteObject.exportObject(server,0);
             Registry registry = LocateRegistry.createRegistry(5000);
