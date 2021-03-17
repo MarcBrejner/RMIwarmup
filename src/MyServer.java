@@ -5,8 +5,11 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class MyServer implements API {
+        public static LinkedBlockingQueue<Car> cars = new LinkedBlockingQueue<Car>();
+        public static LinkedBlockingQueue<Car> finishedCars = new LinkedBlockingQueue<Car>();
 
         CarFactory factory;
 

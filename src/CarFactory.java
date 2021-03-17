@@ -18,4 +18,11 @@ public class CarFactory {
     public static void putCar(Car ca) throws RemoteException{
         finishedCars.add(ca);
     }
+
+    public void initialize() throws RemoteException, InterruptedException, AlreadyBoundException{
+        MyServer server = new MyServer();
+        server.start();
+    }
+
+
 }
