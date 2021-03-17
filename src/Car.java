@@ -7,19 +7,13 @@ public class Car implements Serializable, Runnable {
     }
 
     public synchronized int getWheels(){
-        /*
-        while(!isDone){
-            try{
-                wait();
-            }catch(InterruptedException e){}
-        }*/
-
         return wheels;
     }
 
     boolean isDone;
     int wheels;
     int lights;
+    BinaryTree binaryTree = new BinaryTree().createBinaryTree();
 
 
     public Car(){
@@ -29,6 +23,7 @@ public class Car implements Serializable, Runnable {
 
     public void run(){
         System.out.println(wheels+" wheels ,"+lights+" lights wroom wroom");
+        binaryTree.traverseInOrder(binaryTree.root);
     }
 
 }

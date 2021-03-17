@@ -1,9 +1,11 @@
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-public class MyServer extends UnicastRemoteObject implements API {
+public class MyServer implements API {
 
         CarFactory factory;
         String hostname = "localhost";
@@ -11,7 +13,6 @@ public class MyServer extends UnicastRemoteObject implements API {
         String bindLocation = "//" + hostname + ":" + port + "/car";
 
         protected MyServer() throws RemoteException {
-            super();
             factory = new CarFactory();
         }
 
@@ -28,10 +29,18 @@ public class MyServer extends UnicastRemoteObject implements API {
         }
 
         public void start() throws RemoteException, MalformedURLException, InterruptedException {
-            API stub = new MyServer();
-            Naming.rebind(bindLocation,stub);
+            API server = new MyServer();
+            API stub = (API) UnicastRemoteObject.exportObject(server,0);
+            Registry registry = LocateRegistry.createRegistry(5000);
+            registry.bind("Car",stub);
+
             Car c = new Car();
+            c.run();
             CarFactory.addNewCar(c);
-            System.out.print(CarFactory.finishedCars.take().getWheels());
-        }
+
+            Car q = CarFactory.finishedCars.take();
+            System.out.print(q.getWheels());
+            q.run();
     }
+
+}
