@@ -1,4 +1,5 @@
 import java.net.MalformedURLException;
+import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -28,7 +29,7 @@ public class MyServer implements API {
             CarFactory.putCar(car);
         }
 
-        public void start() throws RemoteException, MalformedURLException, InterruptedException {
+        public void start() throws RemoteException, InterruptedException , AlreadyBoundException {
             API server = new MyServer();
             API stub = (API) UnicastRemoteObject.exportObject(server,0);
             Registry registry = LocateRegistry.createRegistry(5000);
