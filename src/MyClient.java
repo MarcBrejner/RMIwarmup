@@ -10,7 +10,7 @@ public class MyClient{
 
             Registry registry = LocateRegistry.getRegistry(hostname,port);
             API stub = (API) registry.lookup("Car");
-
+            System.out.println("Stub received from: "+hostname);
             Car c = stub.getCar();
             c.run();
             c.binaryTree.add(11);

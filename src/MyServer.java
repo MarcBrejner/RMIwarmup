@@ -41,6 +41,7 @@ public class MyServer implements API {
             Car c = new Car();
             c.run();
             CarFactory.addNewCar(c);
+
             Car q = CarFactory.finishedCars.take();
             System.out.print(q.getWheels());
             q.run();
