@@ -1,13 +1,14 @@
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-public class MyServer extends UnicastRemoteObject implements API {
+public class MyServer implements API {
 
         CarFactory factory;
 
         protected MyServer() throws RemoteException {
-            super();
             factory = new CarFactory();
         }
 
@@ -25,13 +26,16 @@ public class MyServer extends UnicastRemoteObject implements API {
 
         public static void main(String args[]){
 
-        String hostname = "0.0.0.0";
+        String hostname = "192.168.0.107";
         String port = "5000";
         String bindLocation = "//" + hostname + ":" + port + "/car";
 
         try{
-            API stub = new MyServer();
-            Naming.rebind(bindLocation,stub);
+            API server = new MyServer();
+            API stub = (API) UnicastRemoteObject.exportObject(server,0);
+            Registry registry = LocateRegistry.createRegistry(5000);
+            registry.bind(bindLocation,stub);
+
             Car c = new Car();
             c.run();
             CarFactory.addNewCar(c);
